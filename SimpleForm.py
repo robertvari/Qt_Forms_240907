@@ -10,6 +10,7 @@ class MyForm(QWidget):
         super().__init__()
         self.setWindowTitle("Registration Form")
         # self.showMaximized()
+        self.resize(500, 0)
 
         # Create layouts for our widgets
         main_layout = QVBoxLayout(self)
@@ -30,6 +31,26 @@ class MyForm(QWidget):
         # add them to their layout
         name_layout.addWidget(name_lbl)
         name_layout.addWidget(name_field)
+
+
+        # create email label and field
+        email_lbl = QLabel("Email:")
+        email_field = QLineEdit()
+
+        # add them to their layout
+        email_layout.addWidget(email_lbl)
+        email_layout.addWidget(email_field)
+
+        # create email label and field
+        address_lbl = QLabel("Address:")
+        address_field = QLineEdit()
+
+        # add them to their layout
+        address_layout.addWidget(address_lbl)
+        address_layout.addWidget(address_field)
+
+        button = QPushButton("Save Data")
+        main_layout.addWidget(button)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
