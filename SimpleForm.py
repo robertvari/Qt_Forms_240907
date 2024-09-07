@@ -23,6 +23,13 @@ class MyForm(QWidget):
         address_layout = QHBoxLayout()
         main_layout.addLayout(address_layout)
 
+        # create name label and field
+        name_lbl = QLabel("Name:")
+        name_field = QLineEdit()
+
+        # add them to their layout
+        name_layout.addWidget(name_lbl)
+        name_layout.addWidget(name_field)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
