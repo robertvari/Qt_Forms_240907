@@ -1,33 +1,32 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Material
+import QtQuick.Layouts
 
 
 ApplicationWindow{
-    width: 600
-    height: 600
+    width: 500
+    height: 300
     title: "My Form"
     visible: true
-    color: "black"
+    Material.theme: Material.Dark
+    Material.accent: Material.LightBlue
 
-    Button{
-        text: "Button"
-        x: 100
-        y: 100
-    }
+    ColumnLayout{
+        TextField{
+            placeholderText: "Name"
+        }
 
-    Button{
-        text: "Click Me"
-        x: 200
-        y: 100
-    }
+        TextField{
+            placeholderText: "Email"
+        }
 
-    Text{
-        text: "I'm a label"
-        color: "white"
-    }
+        TextField{
+            placeholderText: "Address"
+        }
 
-    TextField{
-        placeholderText: "Name"
-        y: 50
+        Button{
+            text: "Save Data"
+        }
     }
 }
