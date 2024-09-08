@@ -13,20 +13,27 @@ ApplicationWindow{
     Material.accent: Material.LightBlue
 
     ColumnLayout{
+        anchors.fill: parent
+        anchors.margins: 10
+
         TextField{
             placeholderText: "Name"
+            Layout.fillWidth: true
         }
 
         TextField{
             placeholderText: "Email"
+            Layout.fillWidth: true
         }
 
         TextField{
             placeholderText: "Address"
+            Layout.fillWidth: true
         }
 
         Button{
             text: "Save Data"
+            Layout.alignment: Qt.AlignRight
         }
     }
 }
