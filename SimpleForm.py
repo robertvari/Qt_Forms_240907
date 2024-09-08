@@ -2,7 +2,7 @@ from PySide6.QtWidgets import (
     QWidget, QApplication, QLabel, QLineEdit, 
     QPushButton, QHBoxLayout, QVBoxLayout
     )
-import sys
+import sys, json, os
 
 # Subclass QWidget to define our own window
 class MyForm(QWidget):
@@ -52,16 +52,33 @@ class MyForm(QWidget):
         address_layout.addWidget(address_lbl)
         address_layout.addWidget(self.address_field)
 
-        button = QPushButton("Save Data")
-        main_layout.addWidget(button)
+        save_bttn = QPushButton("Save Data")
+        main_layout.addWidget(save_bttn)
 
         # connect signals
-        button.clicked.connect( self.handle_button_clicked )
+        save_bttn.clicked.connect( self.save_data )
 
-    def handle_button_clicked(self):
-        print(f"Name: {self.name_field.text()}")
-        print(f"Email: {self.email_field.text()}")
-        print(f"Address: {self.address_field.text()}")
+        # Try to load user data
+        self.load_data()
+
+    def load_data(self):
+        if os.path.exists("user_data.json"):
+            with open("user_data.json") as f:
+                user_data = json.load(f)
+                self.name_field.setText(user_data["name"])
+                self.email_field.setText(user_data["email"])
+                self.address_field.setText(user_data["address"])
+
+
+    def save_data(self):
+        user_data = {
+            "name": self.name_field.text(),
+            "email": self.email_field.text(),
+            "address": self.address_field.text()
+        }
+
+        with open("user_data.json", "w") as f:
+            json.dump(user_data, f)
 
         # Clear all fields
         self.name_field.clear()
